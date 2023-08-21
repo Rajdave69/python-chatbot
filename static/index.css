@@ -37,14 +37,16 @@ h2 {
   transform: translateX(-50%); /* Center horizontally */
   z-index: 2; /* Place h2 on top */
   white-space: nowrap;
-  margin-top: 20px
+  margin-top: 20px;
 }
 
 .inputbox {
   position: relative;
-  margin: 30px 0;
-  width: 310px;
+  /*margin: 30px 0;*/
+  width: 400px;
   border-bottom: 2px solid #fff;
+  left: 50%; /* Position at the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
 }
 
 .inputbox label {
@@ -56,13 +58,7 @@ h2 {
   font-size: 1em;
   pointer-events: none;
   transition: 0.5s;
-}
-
-input:focus ~ label {
-  top: -5px;
-}
-input:valid ~ label {
-  top: -5px;
+  font-family: monospace;
 }
 
 .inputbox input {
@@ -74,6 +70,7 @@ input:valid ~ label {
   font-size: 1em;
   padding: 0 35px 0 5px;
   color: #fff;
+  font-family: monospace;
 }
 
 .inputbox ion-icon {
@@ -127,6 +124,7 @@ button {
 }
 
 .footer {
+    font-family: "Poppins", sans-serif !important; /* TODO font doesnt apply */
   font-size: 0.9em;
   color: #fff;
   text-align: center;
@@ -142,10 +140,12 @@ button {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
+  font-family: "Poppins", sans-serif;
 }
 
 .footer p a:hover {
   text-decoration: underline;
+  font-family: "Poppins", sans-serif;
 }
 
 .resultbox {
