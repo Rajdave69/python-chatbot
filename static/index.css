@@ -1,7 +1,10 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  /*font-family: "Poppins", sans-serif;*/
+  /*font-family: 'Playfair Display', serif;*/
+  font-family: 'Chivo', sans-serif;
+
 }
 
 section {
@@ -79,6 +82,17 @@ h2 {
   color: #fff;
   font-size: 1.2em;
   top: 20px;
+}
+
+input:focus ~ label {
+  top: -1px;
+  visibility: hidden;
+  opacity: 0;
+
+}
+input:valid ~ label {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .forget {
@@ -190,3 +204,102 @@ button {
   max-height: 150px; /* Set a maximum height for scrolling */
   margin: 3px 2px 2px 3px;
 }
+
+
+.chatbox-panel {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  min-width: 390px;
+  max-width: 390px;
+  height: 500px;
+  margin: 10px; /* Reset margin */
+  padding: 10px; /* Reset padding */
+  border-radius: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+
+
+
+}
+
+
+/* Scrollbar Styles */
+::-webkit-scrollbar-track {
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+
+
+	border-radius: 10px;/*font-family: "Poppins", sans-serif;*/
+	/*background-color: #F5F5F5;*/
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+	/*background-color: #F5F5F5;*/
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	/*background-color: #555;*/
+      backdrop-filter: blur(50px);
+}
+
+
+
+.message-bubble {
+  position: relative;
+  border-radius: 20px;
+  padding: 10px 15px;
+  max-width: 80%;
+  margin-bottom: 10px;
+  clear: both;
+  overflow-wrap: break-word;
+  font-family: monospace;
+  font-size: 1.25em;
+}
+
+.message-bubble.sent {
+  float: right;
+  background-color: transparent; /* Set background to transparent */
+}
+
+.message-bubble.received {
+  float: left;
+  background-color: transparent; /* Set background to transparent */
+}
+
+.message-bubble.sent::after,
+.message-bubble.received::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Pointy indicator for sent messages */
+.message-bubble.sent::after {
+  right: -20px;
+  border: 10px solid transparent;
+  border-left-color: rgba(240, 240, 240, 0.7); /* Set transparent color for the tail */
+  border-top-width: 0;
+  bottom: 10px;
+}
+
+/* Pointy indicator for received messages */
+.message-bubble.received::after {
+  left: -20px;
+  border: 10px solid transparent;
+  border-right-color: rgba(240, 240, 240, 0.7); /* Set transparent color for the tail */
+  border-top-width: 0;
+  bottom: 10px;
+}
+
+/* Apply backdrop filter to blur the background */
+.message-bubble.sent,
+.message-bubble.received {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+
+}
+
+

@@ -4,8 +4,6 @@ console.log("Hello World")
 const form = document.getElementById("form")
 const sendButton = document.getElementById("sendButton")
 const messageInput = document.getElementById("inputbox")
-const resultBox = document.getElementById("resultbox")
-const resultp = document.getElementById("resultp")
 
 
 
