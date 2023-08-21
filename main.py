@@ -1,7 +1,7 @@
 import flask
 from chatbot_ import chatbot_
 
-app = flask.Flask(__name__, template_folder="html", static_folder='jscss')
+app = flask.Flask(__name__, template_folder="html", static_folder='static')
 
 
 @app.route("/")
