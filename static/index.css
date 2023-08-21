@@ -16,8 +16,8 @@ section {
 
 .form-box {
   position: relative;
-  width: 400px;
-  height: 450px;
+  width: 450px;
+  height: 700px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
@@ -31,6 +31,13 @@ h2 {
   font-size: 2em;
   color: #fff;
   text-align: center;
+  position: absolute; /* Position the h2 absolutely */
+  top: 0; /* Position at the top */
+  left: 50%; /* Position at the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  z-index: 2; /* Place h2 on top */
+  white-space: nowrap;
+  margin-top: 20px
 }
 
 .inputbox {
@@ -119,20 +126,25 @@ button {
   font-weight: 600;
 }
 
-.register {
+.footer {
   font-size: 0.9em;
   color: #fff;
   text-align: center;
-  margin: 25px 0 10px;
+  position: absolute; /* Position the footer absolutely */
+  bottom: 0; /* Position at the bottom */
+  width: 100%; /* Make it span the full width */
+  left: 50%; /* Position at the center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  margin-bottom: 20px;
 }
 
-.register p a {
+.footer p a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
 }
 
-.register p a:hover {
+.footer p a:hover {
   text-decoration: underline;
 }
 
