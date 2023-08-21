@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="../static/index.css">
+
 </head>
 
 <body>
@@ -12,22 +13,29 @@
 <section>
   <div class="form-box">
     <div class="form-value">
+
       <form action="" id="form">
-        <h2>Raj's ChatBot</h2>
-        <div class="inputbox">
-          <ion-icon name="mail-outline"></ion-icon>
-          <input type="text" id="inputbox" required>
-          <label for="">Enter Query</label>
+        <h2><b>Raj's ChatBot</b></h2>
+
+        <!-- JS will add code here -->
+        <div class="chatbox-panel">
+          <div class="message-bubble received">
+                Hi, I'm Raj's ChatBot. How can I help you?
+          </div>
+
+
         </div>
 
-        <div class="resultbox">
-          <p id="resultp">e</p>
-        </div>
-        <button id="sendButton">Send</button>
+          <div class="inputbox">
+            <ion-icon name="send-outline" id="send-icon"></ion-icon> <!-- send-outline -->
+            <input type="text" id="inputbox" required>
+            <label for="">Enter Query</label>
+          </div>
 
+        <button type="submit" id="sendButton" hidden></button> <!-- hidden so that entering in the text field will work -->
 
         <div class="footer">
-          <p>Potato <a href="#">Register</a></p>
+          <p>Potato <a href="#">Potato</a></p>
         </div>
       </form>
     </div>
@@ -35,7 +43,7 @@
 </section>
 
 <!-- partial -->
-  <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
+<script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js'></script>
 <script src='https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js'></script>
 
 <!-- Load JS -->
