@@ -22,6 +22,15 @@ sendButton.addEventListener("click", () => {
   console.log(message)
   if (message === "") return
 
+  const messagebox = document.getElementsByClassName('chatbox-panel')[0]
+
+  // create div
+  const sentMessage = document.createElement("div")
+  sentMessage.className = "message-bubble sent"
+  sentMessage.innerText = message
+
+  messagebox.appendChild(sentMessage)
+
   /// Define the URL
   const url = 'http://127.0.0.1:5000/chatbot';
 
@@ -45,7 +54,16 @@ sendButton.addEventListener("click", () => {
       // Clear the input box
     messageInput.value = ""
 
-    resultp.innerHTML = data.response
+      // Create receiving messagebox
+
+      const messageBubble = document.createElement("div")
+      messageBubble.className = "message-bubble received"
+      messageBubble.innerText = data.response
+
+      messagebox.appendChild(messageBubble)
+
+      messageBubble.scrollIntoView()
+
     })
     .catch(error => {
       console.error('Error:', error);
