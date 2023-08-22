@@ -89,3 +89,30 @@ sendButton.addEventListener("click", () => {
 
 
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const formBox = document.querySelector(".form-box");
+  const screenHeight = window.innerHeight;
+  const formBoxHeight = formBox.clientHeight;
+  const middlePosition = (screenHeight - formBoxHeight) / 2;
+
+  formBox.style.bottom = `-${formBoxHeight}px`; /* Start from below the screen */
+  formBox.style.opacity = "1"; /* Fade in the form-box */
+
+  // Trigger the animation after a short delay for smoother transition
+  setTimeout(function () {
+    formBox.style.bottom = `${middlePosition}px`; /* Move up to middle position */
+  }, 100); // Adjust the delay as needed
+});
+
+
+// add event listener to on window resize
+window.addEventListener("resize", () => {
+    const formBox = document.querySelector(".form-box");
+    const screenHeight = window.innerHeight;
+    const formBoxHeight = formBox.clientHeight;
+    const middlePosition = (screenHeight - formBoxHeight) / 2;
+
+    formBox.style.bottom = `${middlePosition}px`; /* Move up to middle position */
+});

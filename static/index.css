@@ -20,18 +20,25 @@ section {
 }
 
 .form-box {
-  position: relative;
+  position: fixed;
+  bottom: -700px; /* Start from below the screen */
+  left: 50%;
+  transform: translateX(-50%);
   width: 450px;
   height: 700px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.75);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.75);
   border-radius: 20px;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0; /* Initially set to fully transparent */
+  transition: bottom 2s ease, opacity 3s ease; /* Apply transitions */
 }
+
+
 
 h2 {
   font-size: 2em;
@@ -330,3 +337,9 @@ button {
   }
 }
 
+@keyframes slideUpAndFade {
+  to {
+    transform: translateY(0%); /* Move the form-box up */
+    opacity: 1; /* Fade in the form-box */
+  }
+}
