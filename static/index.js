@@ -20,15 +20,7 @@ sendButton.addEventListener("click", () => {
   console.log(message)
   if (message === "") return
 
-  const messagebox = document.getElementsByClassName('chat-panel')[0]
-
-  // create div
-  const sentMessage = document.createElement("div")
-  sentMessage.className = "message-bubble sent"
-  sentMessage.innerText = message
-
-  messagebox.appendChild(sentMessage)
-  sentMessage.scrollIntoView()
+  addMessage(message, "sent", false)
 
   /// Define the URL
   const url = 'http://127.0.0.1:5000/chatbot';
@@ -53,42 +45,42 @@ sendButton.addEventListener("click", () => {
       // Clear the input box
       messageInput.value = ""
 
-      // Create receiving messagebox
-
-      const messageBubble = document.createElement("div")
-      messageBubble.className = "message-bubble received"
-      messageBubble.innerText = data.response
-
-      setTimeout(() => {
-        messagebox.appendChild(messageBubble)
-        messageBubble.scrollIntoView()
-      }, 500);
+      addMessage(data.response, "received")
 
     })
     .catch(error => {
       messageInput.value = ""
 
-
       console.error('Error:', error);
-      const messageBubble = document.createElement("div")
-      messageBubble.className = "message-bubble received"
-      messageBubble.style = "color: red; border: 2px solid rgba(255, 0, 0, 0.5);"
-      messageBubble.innerText = "There was an error. Please try again later."
-
-      // sleep for 0.5 seconds
-      setTimeout(() => {
-        messagebox.appendChild(messageBubble)
-        messageBubble.scrollIntoView()
-      }, 500);
-
-
+      addMessage("There was an error.", "received", true, true)
 
     });
 
-
-
-
 });
+
+function addMessage(message, type, delay = true, error = false) {
+
+  // Get the messagebox element
+  const messageBox = document.getElementsByClassName('chat-panel')[0]
+
+  // Create the actual bubble and assign the message
+  const messageBubble = document.createElement("div")
+  messageBubble.className = "message-bubble " + type
+  messageBubble.innerText = message
+
+  // If it's an error, change the style and make it red
+  if (error) {
+    messageBubble.style = "color: red; border: 2px solid rgba(255, 0, 0, 0.5);"
+  }
+
+  // Add a delay of .5 seconds if specified
+  setTimeout(() => {
+    messageBox.appendChild(messageBubble)
+    messageBubble.scrollIntoView()
+  }, delay ? 500 : 0);
+
+}
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
