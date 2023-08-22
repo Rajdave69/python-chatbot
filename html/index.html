@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Raj's Chat Bot</title>
+    <title>Raj's Chatbot</title>
     <link rel="stylesheet" href="../static/index.css">
 
 </head>
@@ -15,22 +15,22 @@
     <div class="form-value">
 
       <form action="" id="form">
-        <h2><b>Raj's Chat Bot</b></h2>
+        <h2><b>Raj's Chatbot</b></h2>
 
-        <!-- JS will add code here -->
+
         <div class="chatbox-panel">
           <div class="message-bubble received">
-                Hi, I'm Raj's ChatBot. How can I help you?
+                {{ intro_message }}
           </div>
-
-
         </div>
 
-          <div class="inputbox">
-            <ion-icon name="send-outline" id="send-icon"></ion-icon> <!-- send-outline -->
-            <input type="text" id="inputbox" required>
-            <label for="">Enter Query</label>
-          </div>
+        <!-- JS will add code here -->
+
+        <div class="inputbox">
+          <ion-icon name="send-outline" id="send-icon"></ion-icon> <!-- send-outline -->
+          <input type="text" id="inputbox" required>
+          <label for="">Send Message</label>
+        </div>
 
         <button type="submit" id="sendButton" hidden></button> <!-- hidden so that entering in the text field will work -->
 

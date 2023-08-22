@@ -80,4 +80,4 @@ patterns = [
     # Add more patterns for different ways users might ask about the venue
 ]
 
-chatbot_ = Chat(patterns, reflections)
+chatbot_ = Chat(pairs=patterns, reflections=reflections)
