@@ -1,4 +1,3 @@
-import nltk
 from nltk.chat.util import Chat, reflections
 
 
@@ -25,7 +24,7 @@ patterns = [
     (r'(?:how|far).*?West Bay', ['The venue is about 2.5 kilometers from West Bay.']),
     (r'(?:how|far).*?Doha Port', ['The venue is about 3.5 kilometers from Doha Port.']),
     (r'(?:how|far).*?Hamad International Airport', ['The venue is about 12 kilometers away from Hamad International Airport.']),
-    (r'(?:participation|how many) .*?countries', [
+    (r'(?:participation|how many|participating ) .*?countries', [
         'Participation is confirmed from 57 countries, with more expected to join.']),
     (r'(?:Prime Minister|expo leadership) .*?Qatar', [
         'Qatar\'s Prime Minister HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani is supporting the Expo.']),
