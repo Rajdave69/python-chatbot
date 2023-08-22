@@ -13,7 +13,7 @@ section {
   align-items: center;
   min-height: 100vh;
   width: 100%;
-  background: url("/static/background.jpg") no-repeat center;
+  background: url("/static/01_5-photo.jpg") no-repeat center;
   background-size: cover;
 }
 
@@ -243,7 +243,6 @@ button {
 }
 
 
-
 .message-bubble {
   position: relative;
   border-radius: 20px;
@@ -254,6 +253,9 @@ button {
   overflow-wrap: break-word;
   font-family: monospace;
   font-size: 1.25em;
+  /*text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);*/
+  opacity: 0; /* Start with 0 opacity */
+  animation: fade-in 0.5s ease forwards; /* Apply the animation */
 }
 
 .message-bubble.sent {
@@ -299,7 +301,18 @@ button {
 .message-bubble.sent,
 .message-bubble.received {
     border: 2px solid rgba(255, 255, 255, 0.5);
-
+    animation: fade-in 0.5s ease forwards; /* Apply the animation */
 }
 
+/* Fade-in animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 

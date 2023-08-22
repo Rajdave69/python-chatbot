@@ -50,7 +50,7 @@ sendButton.addEventListener("click", () => {
       console.log('Response:', data);
 
       // Clear the input box
-    messageInput.value = ""
+      messageInput.value = ""
 
       // Create receiving messagebox
 
@@ -58,22 +58,33 @@ sendButton.addEventListener("click", () => {
       messageBubble.className = "message-bubble received"
       messageBubble.innerText = data.response
 
-      messagebox.appendChild(messageBubble)
-
-      messageBubble.scrollIntoView()
+      setTimeout(() => {
+        messagebox.appendChild(messageBubble)
+        messageBubble.scrollIntoView()
+      }, 500);
 
     })
     .catch(error => {
+      messageInput.value = ""
+
+
       console.error('Error:', error);
+      const messageBubble = document.createElement("div")
+      messageBubble.className = "message-bubble received"
+      messageBubble.style = "color: red; border: 2px solid rgba(255, 0, 0, 0.5);"
+      messageBubble.innerText = "There was an error. Please try again later."
+
+      // sleep for 0.5 seconds
+      setTimeout(() => {
+        messagebox.appendChild(messageBubble)
+        messageBubble.scrollIntoView()
+      }, 500);
+
+
+
     });
 
 
 
 
-
-
-
 });
-
-
-// });
