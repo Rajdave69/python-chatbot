@@ -284,6 +284,7 @@ button {
   border-left-color: rgba(240, 240, 240, 0.7); /* Set transparent color for the tail */
   border-top-width: 0;
   bottom: 10px;
+  z-index: -1;
 }
 
 /* Pointy indicator for received messages */
@@ -293,6 +294,7 @@ button {
   border-right-color: rgba(240, 240, 240, 0.7); /* Set transparent color for the tail */
   border-top-width: 0;
   bottom: 10px;
+  z-index: -1;
 }
 
 /* Apply backdrop filter to blur the background */
