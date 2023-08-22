@@ -20,7 +20,7 @@ sendButton.addEventListener("click", () => {
   console.log(message)
   if (message === "") return
 
-  const messagebox = document.getElementsByClassName('chatbox-panel')[0]
+  const messagebox = document.getElementsByClassName('chat-panel')[0]
 
   // create div
   const sentMessage = document.createElement("div")
@@ -28,6 +28,7 @@ sendButton.addEventListener("click", () => {
   sentMessage.innerText = message
 
   messagebox.appendChild(sentMessage)
+  sentMessage.scrollIntoView()
 
   /// Define the URL
   const url = 'http://127.0.0.1:5000/chatbot';
