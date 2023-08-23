@@ -1,7 +1,7 @@
 /*
 
-█▀█ ▄▀█ ░░█  █▀      █▀▀ █░█ ▄▀█ ▀█▀ █▄▄ █▀█ ▀█▀
-█▀▄ █▀█ █▄█  ▄█      █▄▄ █▀█ █▀█ ░█░ █▄█ █▄█ ░█░
+█▀█ ▄▀█   █  █▀      █▀▀ █ █ ▄▀█ ▀█▀ █▄▄ █▀█ ▀█▀
+█▀▄ █▀█ █▄█  ▄█      █▄▄ █▀█ █▀█  █  █▄█ █▄█  █
 
 
 Welcome to the source code of my chatbot! This is a simple chatbot that uses
@@ -12,9 +12,9 @@ with the NLTK library.
 
 
 
-const form = document.getElementById("form")
-const sendButton = document.getElementById("sendButton")
-const messageInput = document.getElementById("inputbox")
+const form = document.getElementById("form");
+const sendButton = document.getElementById("sendButton");
+const messageInput = document.getElementById("inputbox");
 
 
 
@@ -70,13 +70,13 @@ function addMessage(message, type, delay = true, error = false) {
   const messageBox = document.getElementsByClassName('chat-panel')[0]
 
   // Create the actual bubble and assign the message
-  const messageBubble = document.createElement("div")
+  const messageBubble = document.createElement("div");
   messageBubble.className = "message-bubble " + type
   messageBubble.innerText = message
 
   // If it's an error, change the style and make it red
   if (error) {
-    messageBubble.style = "color: red; border: 2px solid rgba(255, 0, 0, 0.5);"
+    messageBubble.setAttribute("style", "color: red; border: 2px solid rgba(255, 0, 0, 0.5);")
   }
 
   // Add a delay of .5 seconds if specified
@@ -104,6 +104,12 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     formBox.style.bottom = `${middlePosition}px`; /* Move up to middle position */
   }, 100); // Adjust the delay as needed
+
+  // Sleep for 1.5 seconds and then send a welcome message
+    setTimeout(function () {
+        addMessage("Hello! I am the Qatar Expo 2023 chatbot. Try asking me about the venue, schedule, " +
+            "or participating countries", "received", true)
+    }, 1500); // Adjust the delay as needed
 });
 
 

@@ -148,7 +148,7 @@ button {
 }
 
 .footer {
-    font-family: "Poppins", sans-serif !important; /* TODO font doesnt apply */
+  font-family: "Poppins", sans-serif !important; /* TODO font doesnt apply */
   font-size: 0.9em;
   color: #fff;
   text-align: center;
