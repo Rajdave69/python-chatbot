@@ -1,4 +1,15 @@
-console.log("Hello World")
+/*
+
+█▀█ ▄▀█ ░░█  █▀      █▀▀ █░█ ▄▀█ ▀█▀ █▄▄ █▀█ ▀█▀
+█▀▄ █▀█ █▄█  ▄█      █▄▄ █▀█ █▀█ ░█░ █▄█ █▄█ ░█░
+
+
+Welcome to the source code of my chatbot! This is a simple chatbot that uses
+a Flask backend to communicate with a Python chatbot. The chatbot is created
+with the NLTK library.
+
+ */
+
 
 
 const form = document.getElementById("form")
@@ -7,23 +18,20 @@ const messageInput = document.getElementById("inputbox")
 
 
 
-// Add an event listener to the form's submit event
+// Add an event listener to the send message form
 form.addEventListener('submit', function (event) {
-  // Prevent the default form submission behavior
+  // Stop the form from reloading the page
   event.preventDefault();
-
 });
 
-
+// Add an event listener to the send button
 sendButton.addEventListener("click", () => {
+  // Get the message and check if it's empty
   const message = messageInput.value
-  console.log(message)
   if (message === "") return
 
+  // Create the message bubble
   addMessage(message, "sent", false)
-
-  /// Define the URL
-  const url = 'http://127.0.0.1:5000/chatbot';
 
   // Define the JSON payload
   const payload = {
@@ -31,7 +39,7 @@ sendButton.addEventListener("click", () => {
   };
 
   // Set up the fetch request
-  fetch(url, {
+  fetch(`${document.location.origin}/chatbot`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -40,24 +48,22 @@ sendButton.addEventListener("click", () => {
     })
     .then(response => response.json())
     .then(data => {
-      console.log('Response:', data);
+      console.debug('Response:', data);
 
-      // Clear the input box
+      // Clear the input box and create the response bubble
       messageInput.value = ""
-
       addMessage(data.response, "received")
-
     })
     .catch(error => {
       messageInput.value = ""
 
       console.error('Error:', error);
       addMessage("There was an error.", "received", true, true)
-
     });
 
 });
 
+// Function to add a message to the chat box
 function addMessage(message, type, delay = true, error = false) {
 
   // Get the messagebox element
@@ -82,13 +88,15 @@ function addMessage(message, type, delay = true, error = false) {
 }
 
 
-
+// Add an event listener for when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
+  // Get the form-box element and calculate the middle position
   const formBox = document.querySelector(".form-box");
   const screenHeight = window.innerHeight;
   const formBoxHeight = formBox.clientHeight;
   const middlePosition = (screenHeight - formBoxHeight) / 2;
 
+  // Set the initial position and opacity
   formBox.style.bottom = `-${formBoxHeight}px`; /* Start from below the screen */
   formBox.style.opacity = "1"; /* Fade in the form-box */
 
@@ -101,10 +109,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // add event listener to on window resize
 window.addEventListener("resize", () => {
-    const formBox = document.querySelector(".form-box");
-    const screenHeight = window.innerHeight;
-    const formBoxHeight = formBox.clientHeight;
-    const middlePosition = (screenHeight - formBoxHeight) / 2;
+  // recalculate the middle position
+  const formBox = document.querySelector(".form-box");
+  const screenHeight = window.innerHeight;
+  const formBoxHeight = formBox.clientHeight;
+  const middlePosition = (screenHeight - formBoxHeight) / 2;
 
-    formBox.style.bottom = `${middlePosition}px`; /* Move up to middle position */
+  // Center the form box
+  formBox.style.bottom = `${middlePosition}px`; /* Move up to middle position */
 });
