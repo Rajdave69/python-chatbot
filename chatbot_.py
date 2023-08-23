@@ -1,43 +1,41 @@
+import random
+
 from nltk.chat.util import Chat, reflections
 
-
 patterns = [
-    (r'hello|hi|hey|hihi|owo|hewo|helo', ['Hello! Welcome to Qatar Expo 2023. How can I assist you?']),
-    (r'\b(where|location)\b.*\bexpo\b', [
-        'The Expo 2023 will take place in Doha, Qatar. It\'s located on the west side of Doha city, about 2.5 kilometers from West Bay, 3.5 kilometers from Doha Port, and around 12 kilometers from Hamad International Airport.']),
-    (r'(?:when|start).*?expo', [
+    (r'^hello|^hi|^hey', ['Hello! Welcome to Qatar Expo 2023. How can I assist you?']),
+    (r'\b(location|venue|Al Bidda Park)\b.*\bexpo\b', [
+        'Al Bidda Park is the scenic venue for the Expo 2023. It\'s located on the west side of Doha city, about 2.5 kilometers from West Bay, 3.5 kilometers from Doha Port, and around 12 kilometers from Hamad International Airport.']),
+    (r'(start|starting|begin|beginning).*?expo', [
         'The Expo 2023 in Doha will start on October 2, 2023, and conclude on March 28, 2024. It\'s a six-month event showcasing horticulture and sustainable development.']),
-    (r'(?:what|theme|about).*?expo', [
+    (r'(theme).*?expo', [
         'The chosen theme for Doha Expo 2023 is \'Green Desert, Better Environment.\' The event aims to inspire innovative solutions for mitigating desertification and promoting a sustainable future.']),
-    (r'(?:what|about).*?expect|(?:what|attractions).*?expo', [
+    (r'(about).*?expect|(?:what|attractions).*?expo', [
         'At the Expo 2023, you\'ll experience innovation, sustainability, culture, and entertainment. The event features ornamental gardens, panel discussions, conferences, live shows, art performances, and culinary experiences. It spans an impressive 1.7 million square meters in Al Bidda Park, offering breathtaking views of the Arabian Gulf.']),
-    (r'(?:who|organizing|organizers).*?expo', [
-        'Doha Expo 2023 is happening with the support of Qatar\'s Prime Minister, HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, and it\'s led by the Ministry of Municipality.']),
+    (r'(organizing|organizers).*?expo', [
+        "Doha Expo 2023 is happening with the support of Qatar's Prime Minister, HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, and it's led by the Ministry of Municipality."]),
     (r'(?:how|get).*?there|(?:how|visit).*?visitor information', [
         'The Expo is conveniently located in the heart of Doha, with easy access to Hamad International Airport, Doha Port, and the Business Centre. It\'s expected to attract international visitors, organizers, representatives from various sectors, and the general public.']),
     (r'more .*expo|website', [
         'For more detailed information about Doha Expo 2023, you can visit the official website: www.dohaexpo2023.gov.qa.']),
-    (r'(?:hosting|host country).*?expo', [
+    (r'(?:hosting|host country|host|country).*?expo', [
         'The International Horticultural Expo 2023 will be hosted by the State of Qatar.']),
-    (r'Al Bidda Park|(?:venue|location).*?expo', [
-        'Al Bidda Park is the scenic venue for the Expo 2023. It\'s located in Doha, with breathtaking views of the Arabian Gulf.']),
-    (r'(?:how|far).*?West Bay', ['The venue is about 2.5 kilometers from West Bay.']),
-    (r'(?:how|far).*?Doha Port', ['The venue is about 3.5 kilometers from Doha Port.']),
-    (r'(?:how|far).*?Hamad International Airport', ['The venue is about 12 kilometers away from Hamad International Airport.']),
-    (r'(?:participation|how many|participating ) .*?countries', [
+    (r'(far).*?West Bay', ['The venue is about 2.5 kilometers from West Bay.']),
+    (r'(far).*?Doha Port', ['The venue is about 3.5 kilometers from Doha Port.']),
+    (r'(far).*?Hamad International Airport|HIA',
+     ['The venue is about 12 kilometers away from Hamad International Airport.']),
+    (r'(?:participation|how many|participating|participant) .*?countries', [
         'Participation is confirmed from 57 countries, with more expected to join.']),
-    (r'(?:Prime Minister|expo leadership) .*?Qatar', [
-        'Qatar\'s Prime Minister HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani is supporting the Expo.']),
-    (r'(?:how|big|size) .*?site|site .*?expo', [
+    (r'(?:Prime Minister|expo leadership|leadership)', [
+        'Qatar\'s Prime Minister HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani is supporting and leading the Expo.']),
+    (r'(big|size) .*?site|site .*?expo', [
         'The event site spans an impressive 1.7 million square meters in Al Bidda Park.']),
-    (r'(?:partners|collaborating organizations) .*?expo', [
+    (r'(?:partners|collaborating organizations) .*?expo', [ # todo done till here
         'The Expo is in collaboration with the Bureau International Des Expositions (BIE) and the International Association for Horticultural Producers (AIPH).']),
     (r'(?:expected number|how many) .*?visitors', [
         'An estimated 3 million visitors are expected to explore the wonders of this remarkable event.']),
     (r'Qatar Expo 2023 (?:vision|event mission)', [
         'The Expo aims to inspire the international community to adopt innovative solutions for mitigating desertification and promoting a sustainable future.']),
-    (r'(?:when|start) .*?expo', [
-        'Expo 2023 Doha is scheduled to commence on October 2, 2023, and will run for an impressive 179 days of celebrations, concluding on March 28, 2024.']),
     (r'partners .*?expo', [
         'As our partner, you will have access to numerous resources and the opportunity to foster connections with like-minded organisations and institutions. Whether you participate in existing conferences or organise your own related to our theme or sub-themes, the Congress Centre provides a robust platform for knowledge exchange, conversation, and collaboration.']),
     # Additional patterns based on user queries about venue
@@ -66,6 +64,31 @@ patterns = [
 ]
 
 
+class CustomChat(Chat):
+    def respond(self, str):
+        """
+        Generate a response to the user input.
+
+        :type str: str
+        :param str: The string to be mapped
+        :rtype: str
+        """
+
+        # check each pattern
+        for (pattern, response) in self._pairs:
+            match = pattern.search(str)
+
+            # did the pattern match?
+            if match:
+                resp = random.choice(response)  # pick a random response
+                resp = self._wildcards(resp, match)  # process wildcards
+
+                # fix munged punctuation at the end
+                if resp[-2:] == "?.":
+                    resp = resp[:-2] + "."
+                if resp[-2:] == "??":
+                    resp = resp[:-2] + "?"
+                return resp
 
 
-chatbot_ = Chat(pairs=patterns, reflections=reflections)
+chatbot_ = CustomChat(pairs=patterns, reflections=reflections)
