@@ -75,12 +75,12 @@ h2 {
 }
 
 .inputbox input {
-  width: 100%;
+  width: 90%;
   height: 50px;
   background: transparent;
   border: none;
   outline: none;
-  font-size: 1em;
+  font-size: 1.15em;
   padding: 0 35px 0 5px;
   color: #fff;
   font-family: monospace;
@@ -237,7 +237,7 @@ button {
   margin: 10px; /* Reset margin */
   padding: 10px; /* Reset padding */
   border-radius: 5px;
-  overflow-y: scroll;
+  overflow-y: auto; /* Enable vertical scrolling */
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
