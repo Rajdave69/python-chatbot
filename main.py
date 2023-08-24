@@ -1,5 +1,14 @@
-import flask
-from chatbot_ import chatbot_
+try:
+    import flask
+    from chatbot_ import chatbot_
+except ImportError:
+    import sys
+    import subprocess
+
+    print("Installing flask...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "flask"])
+
+    import flask
 
 app = flask.Flask(__name__, template_folder="html", static_folder='static')
 
@@ -27,4 +36,4 @@ def chatbot():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=False)

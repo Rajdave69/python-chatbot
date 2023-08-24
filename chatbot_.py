@@ -1,6 +1,15 @@
-import random
+try:
+    import random
+    from nltk.chat.util import Chat, reflections
+except ImportError:
+    import sys
+    import subprocess
 
-from nltk.chat.util import Chat, reflections
+    print("Installing nltk...")
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "nltk"])
+
+    import random
+    from nltk.chat.util import Chat, reflections
 
 patterns = [
     (r'^hello|^hi|^hey', ['Hello! Welcome to Qatar Expo 2023. How can I assist you?']),
@@ -30,7 +39,7 @@ patterns = [
         'Qatar\'s Prime Minister HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani is supporting and leading the Expo.']),
     (r'(big|size) .*?site|site .*?expo', [
         'The event site spans an impressive 1.7 million square meters in Al Bidda Park.']),
-    (r'(?:partners|collaborating organizations) .*?expo', [ # todo done till here
+    (r'(?:partners|collaborating organizations) .*?expo', [  # todo done till here
         'The Expo is in collaboration with the Bureau International Des Expositions (BIE) and the International Association for Horticultural Producers (AIPH).']),
     (r'(?:expected number|how many) .*?visitors', [
         'An estimated 3 million visitors are expected to explore the wonders of this remarkable event.']),
@@ -64,6 +73,7 @@ patterns = [
 ]
 
 
+# Create a custom chatbot class which uses pattern.search() instead of pattern.match()
 class CustomChat(Chat):
     def respond(self, str):
         """
