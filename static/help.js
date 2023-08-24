@@ -1,6 +1,3 @@
-
-
-
 // Add an event listener for when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
   // Get the form-box element and calculate the middle position
