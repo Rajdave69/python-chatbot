@@ -15,3 +15,15 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install the req
 pip install -r requirements.txt
 ```
 
+## Features
+
+### Beautiful Glassmorphism UI
+
+![img.png](media/homepage.png)
+![img.png](media/helppage.png)
+
+### Animations
+
+![Send Message input Animation](media/send-msg-animation.gif)
+![Message Bubble Animation](media/message-bubble-animation.gif)
+![Page load Animation](media/page-load-animation.gif)
