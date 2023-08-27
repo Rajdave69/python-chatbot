@@ -13,21 +13,21 @@ except ImportError:
 
 patterns = [
     (r'^hello|^hi|^hey', ['Hello! Welcome to Qatar Expo 2023. How can I assist you?']),
-    (r'\b(location|venue|Al Bidda Park)\b.*\bexpo\b', [
+    (r'(location|venue|Al Bidda Park|located)', [
         'Al Bidda Park is the scenic venue for the Expo 2023. It\'s located on the west side of Doha city, about 2.5 kilometers from West Bay, 3.5 kilometers from Doha Port, and around 12 kilometers from Hamad International Airport.']),
-    (r'(start|starting|begin|beginning).*?expo', [
+    (r'(start|starting|begin|beginning|commence)', [
         'The Expo 2023 in Doha will start on October 2, 2023, and conclude on March 28, 2024. It\'s a six-month event showcasing horticulture and sustainable development.']),
-    (r'(theme).*?expo', [
+    (r'(theme)', [
         'The chosen theme for Doha Expo 2023 is \'Green Desert, Better Environment.\' The event aims to inspire innovative solutions for mitigating desertification and promoting a sustainable future.']),
-    (r'(about).*?expect|(?:what|attractions).*?expo', [
+    (r'(about).*?expect|(?:what|attractions)', [
         'At the Expo 2023, you\'ll experience innovation, sustainability, culture, and entertainment. The event features ornamental gardens, panel discussions, conferences, live shows, art performances, and culinary experiences. It spans an impressive 1.7 million square meters in Al Bidda Park, offering breathtaking views of the Arabian Gulf.']),
-    (r'(organizing|organizers).*?expo', [
+    (r'(organizing|organizers)', [
         "Doha Expo 2023 is happening with the support of Qatar's Prime Minister, HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani, and it's led by the Ministry of Municipality."]),
     (r'(?:how|get).*?there|(?:how|visit).*?visitor information', [
         'The Expo is conveniently located in the heart of Doha, with easy access to Hamad International Airport, Doha Port, and the Business Centre. It\'s expected to attract international visitors, organizers, representatives from various sectors, and the general public.']),
     (r'more .*expo|website', [
         'For more detailed information about Doha Expo 2023, you can visit the official website: www.dohaexpo2023.gov.qa.']),
-    (r'(?:hosting|host country|host|country).*?expo', [
+    (r'(?:hosting|host country|host|country)', [
         'The International Horticultural Expo 2023 will be hosted by the State of Qatar.']),
     (r'(far).*?West Bay', ['The venue is about 2.5 kilometers from West Bay.']),
     (r'(far).*?Doha Port', ['The venue is about 3.5 kilometers from Doha Port.']),
@@ -37,19 +37,19 @@ patterns = [
         'Participation is confirmed from 57 countries, with more expected to join.']),
     (r'(?:Prime Minister|expo leadership|leadership)', [
         'Qatar\'s Prime Minister HE Sheikh Mohammed bin Abdulrahman bin Jassim Al Thani is supporting and leading the Expo.']),
-    (r'(big|size) .*?site|site .*?expo', [
+    (r'(big|size) .*?site|site', [
         'The event site spans an impressive 1.7 million square meters in Al Bidda Park.']),
-    (r'(?:partners|collaborating organizations) .*?expo', [  # todo done till here
+    (r'(?:partners|collaborating organizations) ', [  # todo done till here
         'The Expo is in collaboration with the Bureau International Des Expositions (BIE) and the International Association for Horticultural Producers (AIPH).']),
-    (r'(?:expected number|how many) .*?visitors', [
+    (r'(?:expected number|how many).*?visitors', [
         'An estimated 3 million visitors are expected to explore the wonders of this remarkable event.']),
     (r'Qatar Expo 2023 (?:vision|event mission)', [
         'The Expo aims to inspire the international community to adopt innovative solutions for mitigating desertification and promoting a sustainable future.']),
-    (r'partners .*?expo', [
+    (r'partners', [
         'As our partner, you will have access to numerous resources and the opportunity to foster connections with like-minded organisations and institutions. Whether you participate in existing conferences or organise your own related to our theme or sub-themes, the Congress Centre provides a robust platform for knowledge exchange, conversation, and collaboration.']),
     # Additional patterns based on user queries about venue
     (r'(?:what|where) .*?venue', ['The venue for the Expo 2023 is Al Bidda Park in Doha, Qatar.']),
-    (r'site .*?expo', [
+    (r'site', [
         'The site of the Expo is located in Al Bidda Park, in the heart of Doha, Qatar.']),
     (r'(?:divided into|zones) .*?site', [
         'The site is currently divided into three distinctive areas. The Northern portion will host the international event, while the remaining two zones will be used for cultural, entertainment activities, and panel discussions.']),
