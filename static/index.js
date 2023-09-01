@@ -58,7 +58,7 @@ sendButton.addEventListener("click", () => {
       messageInput.value = ""
 
       console.error('Error:', error);
-      addMessage("There was an error.", "received", true, true)
+      addMessage("There was an error while trying to reach the API.", "received", true, true)
     });
 
 });
